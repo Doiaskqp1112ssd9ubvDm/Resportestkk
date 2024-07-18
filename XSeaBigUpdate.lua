@@ -4512,8 +4512,8 @@ local Page2 = Tap1.CreatePage({
 })
 
 local Tap2 = Windown.CreateTap({
-	Title = "Sub Farming",
-	Icon = 10709769841
+	Title = "Class Farm",
+	Icon = 9606626859
 })
 
 local Page3 = Tap2.CreatePage({
@@ -4526,7 +4526,7 @@ local Page4 = Tap2.CreatePage({
 
 local Tap3 = Windown.CreateTap({
 	Title = "Sea Event",
-	Icon = 10709761530
+	Icon = 15679744806
 })
 
 local Page5 = Tap3.CreatePage({
@@ -4578,7 +4578,7 @@ local Page12 = Tap6.CreatePage({
 
 local Tap7 = Windown.CreateTap({
 	Title = "Shop",
-	Icon = 10734952479
+	Icon = 130882646
 })
 
 local Page13 = Tap7.CreatePage({
