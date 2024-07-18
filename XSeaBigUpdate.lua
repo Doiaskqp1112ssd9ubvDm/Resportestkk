@@ -4710,7 +4710,26 @@ FarmMode = "Quest"
 	end,
 })
 
-
+Page1.CreateToggle({
+	Name = "Safe Mode",
+	Dis = "avoid bounty hunting ",
+	Value = false,
+	Callback = function(S)
+	    _G.Safe_Mode = S
+	    StopTween(_G.Safe_Mode)
+		print(v)
+	end,
+})
+    spawn(function()
+        pcall(function()
+            while wait() do
+                if _G.Safe_Mode then
+                    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,200,0)
+                end
+            end
+        end)
+    end)
+    
 Page1.CreateToggle({
 	Name = "Auto Farm Nearest",
 	Dis = "Farm Near Mob",
@@ -9685,7 +9704,82 @@ end
             end)
         end
     end)
-    
+
+Page5.CreateToggle({
+	Name = "Auto Buy Hamer",
+	Dis = "Farm Wood for backup",
+	Value = false,
+	Callback = function(Duydz)
+	_G.AutoBuyHamer = DuyDz
+	StopTween(_G.AutoBuyHamer)
+		print(v)
+	end,
+}) 
+
+                                    spawn(function()
+                                            while wait() do
+                                                if _G.AutoBuyHamer then
+                                                    repeat wait() topos(CFrame.new(-16529.4922, 75.8897476, 310.603882, -0.292773664, -7.61506485e-08, -0.956181765, -4.15630765e-08, 1, -6.69141258e-08, 0.956181765, 2.01511625e-08, -0.292773664)) until (Vector3.new(-16529.4922, 75.8897476, 310.603882, -0.292773664, -7.61506485e-08, -0.956181765, -4.15630765e-08, 1, -6.69141258e-08, 0.956181765, 2.01511625e-08, -0.292773664) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.AutoBuyHamer
+                                                local args = {
+                                                    [1] = "Shipwright"
+                                                }
+                                    
+                                                game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RF/InteractSubclassQuest"):InvokeServer(unpack(args))
+                                    
+                                                local args = {
+                                                    [1] = "Shipwright"
+                                                }
+                                    
+                                                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SubclassNetwork"):WaitForChild("PurchaseSubclass"):InvokeServer(unpack(args))
+                                    
+                                                local args = {
+                                                    [1] = "Shipwright"
+                                                }
+                                    
+                                                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SubclassNetwork"):WaitForChild("EquipSubclass"):InvokeServer(unpack(args))
+                                                end
+                                            end
+                                        end)
+
+Page5.CreateToggle({
+	Name = "Auto Buy Shipwinght Teacher",
+	Dis = "Shipwinght Teacher!",
+	Value = false,
+	Callback = function(v)
+	_G.GetQuestRepia = v
+	StopTween(_G.GetQuestRepia)
+		print(v)
+	end,
+}) 
+
+                                    spawn(function()
+                                        while wait() do
+                                            if _G.GetQuestRepia then
+                                            repeat wait() topos(CFrame.new(-16529.4922, 75.8897476, 310.603882, -0.292773664, -7.61506485e-08, -0.956181765, -4.15630765e-08, 1, -6.69141258e-08, 0.956181765, 2.01511625e-08, -0.292773664)) until (Vector3.new(-16529.4922, 75.8897476, 310.603882, -0.292773664, -7.61506485e-08, -0.956181765, -4.15630765e-08, 1, -6.69141258e-08, 0.956181765, 2.01511625e-08, -0.292773664) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.QRepairBoat
+                                            local args = {
+                                                [1] = "Shipwright"
+                                            }
+                                
+                                            game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RF/InteractSubclassQuest"):InvokeServer(unpack(args))
+                                            wait(1)
+                                            local args = {
+                                                [1] = "Shipwright"
+                                            }
+                                
+                                            game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RF/StartSubclassQuest"):InvokeServer(unpack(args))
+                                            wait(1)
+                                            local args = {
+                                                [1] = "Shipwright"
+                                            }
+                                
+                                            game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RF/InteractSubclassQuest"):InvokeServer(unpack(args))
+                                            wait(1)
+                                            repeat wait()  topos(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667)) until  (Vector3.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.GetQuestRepia
+                                          
+                                            end
+                                        end
+                                    end)
+                                        
 Page5.CreateToggle({
 	Name = "Auto Destroy Boat ",
 	Dis = "when you still 0 HP",
