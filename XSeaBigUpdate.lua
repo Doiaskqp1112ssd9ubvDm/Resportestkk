@@ -103,7 +103,7 @@ local RunService = game:GetService('RunService')
 local camera = workspace.CurrentCamera
 local DDX,DDY
 local Mouse = game.Players.LocalPlayer:GetMouse()
-local BlurFrameL = loadstring(game:HttpGet(''))()
+local BlurFrameL = loadstring(game:HttpGet('https://raw.githubusercontent.com/Doiaskqp1112ssd9ubvDm/Resportestkk/main/BlurFrame.txt'))()
 
 function dragify(Frame, object)
 	local dragToggle = false
