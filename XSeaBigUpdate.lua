@@ -1,4 +1,3 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Doiaskqp1112ssd9ubvDm/Resportestkk/main/nofi.lua.txt"))()
 local UserInputService = game:GetService("UserInputService")
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local TweenService = game:GetService("TweenService")
@@ -4499,6 +4498,19 @@ end)
         game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
     end)
 
+local tapsk = Windown.CreateTap({
+	Title = "Status Severs",
+	Icon = 10734984606
+})
+
+local Page19 = tapsk.CreatePage({
+	Side = "Left",
+})
+
+local Page20 = tapsk.CreatePage({
+	Side = "Right",
+})
+
 local Tap1 = Windown.CreateTap({
 	Title = "Main",
 	Icon = 15169955786
@@ -4604,13 +4616,77 @@ local Page16 = Tap8.CreatePage({
 })
 
 
+local CheckGetYama = Page19.CreateLable({
+	Name = "[Check]"
+})
+
+
+    spawn(function()
+        while wait() do
+            pcall(function()
+                if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter","Progress") >= 30 then
+                    CheckGetYama:SetDesc("Success :".."30 Kills")
+                else
+                    CheckGetYama:SetDesc("Failed :"..""..game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter","Progress"))
+                end
+            end)
+        end
+    end)
+    
+local CheckDarkBoss = Page20.CreateLable({
+	Name = "[Check]"
+})
+
+    spawn(function()
+        while wait() do
+        pcall(function()
+          if game:GetService("Workspace").Enemies:FindFirstChild("Darkbeard") then
+            CheckDarkBoss:Set("blackbeard Boss :".."✅")
+          else
+            CheckDarkBoss:Set("blackbeard Boss :".."❌")
+          end
+          end)
+        end
+        end)
+        
+local CheckElites = Page20.CreateLable({
+	Name = "[Check]"
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") or game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") or game:GetService("ReplicatedStorage"):FindFirstChild("Urban") or game:GetService("Workspace").Enemies:FindFirstChild("Diablo") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre") or game:GetService("Workspace").Enemies:FindFirstChild("Urban") then
+                CheckElites:SetDesc("Elite Status : Spawned | Killed: "..game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter","Progress"))	
+            else
+                CheckElites:SetDesc("Elite Status : Despawned | Killed: "..game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter","Progress"))	
+            end
+        end)
+    end
+end)
+spawn(function()
+    while wait() do
+        pcall(function()
+            if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") or game:GetService("Workspace").Enemies:FindFirstChild("Diablo") then
+                CheckElites:SetTitle("Elite Name : [ Diablo ] ")
+            elseif game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre") then
+                CheckElites:SetTitle("Elite Name : [ Deandre ] ")	
+            elseif game:GetService("ReplicatedStorage"):FindFirstChild("Urban") or game:GetService("Workspace").Enemies:FindFirstChild("Urban") then
+                CheckElites:SetTitle("Elite Name : [ Urban ] ")
+            else
+                CheckElites:SetTitle("Elite Name : ")
+            end
+        end)
+    end
+end)
+
 Page1.CreateLable({
 	Name = "Main"
 })
 
     
 local Time = Page1.CreateLable({
-	Name = "EXC Time"
+	Name = "Time"
 })
 
 
