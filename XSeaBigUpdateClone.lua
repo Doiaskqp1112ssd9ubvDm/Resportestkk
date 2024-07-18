@@ -4710,7 +4710,26 @@ FarmMode = "Quest"
 	end,
 })
 
-
+Page1.CreateToggle({
+	Name = "Safe Mode",
+	Dis = "",
+	Value = true,
+	Callback = function(S)
+	    _G.Safe_Mode = S
+	    StopTween(_G.Safe_Mode)
+		print(v)
+	end,
+})
+    spawn(function()
+        pcall(function()
+            while wait() do
+                if _G.Safe_Mode then
+                    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,200,0)
+                end
+            end
+        end)
+    end)
+    
 Page1.CreateToggle({
 	Name = "Auto Farm Nearest",
 	Dis = "Farm Near Mob",
