@@ -4607,7 +4607,23 @@ Page1.CreateLable({
 	Name = "Main"
 })
 
-    
+local Client1 = Page1.CreateLable({
+	Name = ""
+})
+
+
+function UpdateClient1()
+local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+Client1:Set("[Ping] : "..Ping)
+end
+
+spawn(function()
+while true do wait(.1)
+UpdateClient1()
+end
+end)
+
+
 local Time = Page1.CreateLable({
 	Name = "EXC Time"
 })
@@ -4712,7 +4728,7 @@ FarmMode = "Quest"
 
 Page1.CreateToggle({
 	Name = "Safe Mode",
-	Dis = "",
+	Dis = "avoid bounty hunting ",
 	Value = true,
 	Callback = function(S)
 	    _G.Safe_Mode = S
@@ -9891,137 +9907,143 @@ Page5.CreateToggle({
 	end,
 }) 
 
+    -- spawn(function()
+    --     while wait() do
+    --         pcall(function()
+    --             if _G.AutoKillShark and  World3 then
+    --                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+    --                     if v.Name == "Shark" then
+    --                         if (v.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position).Magnitude <= 500 then
+    --                         if game:GetService("Workspace").Enemies:FindFirstChild(v.Name) then
+    --                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+    --                             repeat task.wait(_G.FastAttackDelay)
+    --                                 AutoHaki()
+    --                                 EquipWeapon(_G.SelectWeapon)
+    --                                 v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+    --                                 v.HumanoidRootPart.CanCollide = false
+    --                                 topos(v.HumanoidRootPart.CFrame * Pos)
+    --                                 AttackNoCD()
+                                    -- sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
+    --                             until not _G.AutoKillShark or not v.Parent or v.Humanoid.Health <= 0
+    --                         end
+    --                         end
+    --                         end
+    --                     end
+    --                 end
+    --             end
+    --         end)
+    --     end
+    -- end)
 
-     spawn(function()
-         while wait() do
-             pcall(function()
-                 if _G.AutoKillShark and  World3 then
-                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                         if v.Name == "Shark" then
-                             if (v.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position).Magnitude <= 500 then
-                             if game:GetService("Workspace").Enemies:FindFirstChild(v.Name) then
-                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                 repeat task.wait(_G.FastAttackDelay)
-                                     AutoHaki()
-                                     EquipWeapon(_G.SelectWeapon)
-                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-                                     v.HumanoidRootPart.CanCollide = false
-                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                     AttackNoCD()
-                                     sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
-                                 until not _G.AutoKillShark or not v.Parent or v.Humanoid.Health <= 0
-                             end
-                             end
-                             end
-                         end
-                     end
-                 end
-             end)
-         end
-     end)
+    -- spawn(function()
+    --     while wait() do
+    --         pcall(function()
+    --             if _G.AutoKillPiranha and World3 then
+    --                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+    --                     if v.Name == "Piranha" then
+    --                         if (v.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position).Magnitude <= 500 then
+    --                         if game:GetService("Workspace").Enemies:FindFirstChild(v.Name) then
+    --                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+    --                             repeat task.wait(_G.FastAttackDelay)
+    --                                 AutoHaki()
+    --                                 EquipWeapon(_G.SelectWeapon)
+    --                                 v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+    --                                 v.HumanoidRootPart.CanCollide = false
+    --                                 topos(v.HumanoidRootPart.CFrame * Pos)
+    --                                 AttackNoCD()
+    --                             until not _G.AutoKillPiranha or not v.Parent or v.Humanoid.Health <= 0
+    --                         end
+    --                         end
+    --                         end
+    --                     end
+    --                 end
+    --             end
+    --         end)
+    --     end
+    -- end)
 
-     spawn(function()
-         while wait() do
-             pcall(function()
-                 if _G.AutoKillPiranha and World3 then
-                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                        if v.Name == "Piranha" then
-                             if (v.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position).Magnitude <= 500 then
-                             if game:GetService("Workspace").Enemies:FindFirstChild(v.Name) then
-                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                repeat task.wait(_G.FastAttackDelay)
-                                     AutoHaki()
-                                     EquipWeapon(_G.SelectWeapon)
-                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-                                    v.HumanoidRootPart.CanCollide = false
-    -                                topos(v.HumanoidRootPart.CFrame * Pos)
-                                     AttackNoCD()
-                                 until not _G.AutoKillPiranha or not v.Parent or v.Humanoid.Health <= 0
-                             end
-                             end
-                             end
-                         end
-                     end
-                 end
-            end)
-         end
-     end)
-
-    spawn(function()
-         while wait() do
-            pcall(function()
-                 if _G.AutoKillFishCrew and  World3 then
-                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                       if v.Name == "Fish Crew Member" then
-                            if (v.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position).Magnitude <= 500 then
-                           if game:GetService("Workspace").Enemies:FindFirstChild(v.Name) then
-                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                 repeat task.wait(_G.FastAttackDelay)
-                                     AutoHaki()
-                                     EquipWeapon(_G.SelectWeapon)
-                                     v.HumanoidRootPart.CanCollide = false
-                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                     AttackNoCD()
-                                     StartBring = true
-                                     MonFarm = v.Name
-                                     PosMon = v.HumanoidRootPart.CFrame
-                                 until not _G.AutoKillFishCrew or not v.Parent or v.Humanoid.Health <= 0
-                             end
-                             end
-                             end
-                         end
-                     end
-                 end
-             end)
-         end
-     end)
+    -- spawn(function()
+    --     while wait() do
+    --         pcall(function()
+    --             if _G.AutoKillFishCrew and  World3 then
+    --                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+    --                     if v.Name == "Fish Crew Member" then
+    --                         if (v.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position).Magnitude <= 500 then
+    --                         if game:GetService("Workspace").Enemies:FindFirstChild(v.Name) then
+    --                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+    --                             repeat task.wait(_G.FastAttackDelay)
+    --                                 AutoHaki()
+    --                                 EquipWeapon(_G.SelectWeapon)
+    --                                 v.HumanoidRootPart.CanCollide = false
+    --                                 v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+    --                                 topos(v.HumanoidRootPart.CFrame * Pos)
+    --                                 AttackNoCD()
+    --                                 StartBring = true
+    --                                 MonFarm = v.Name
+    --                                 PosMon = v.HumanoidRootPart.CFrame
+    --                             until not _G.AutoKillFishCrew or not v.Parent or v.Humanoid.Health <= 0
+    --                         end
+    --                         end
+    --                         end
+    --                     end
+    --                 end
+    --             end
+    --         end)
+    --     end
+    -- end)
     
-    spawn(function()
-         while wait() do
-             if  _G.AutoTerrorshark and World3 then
-                 pcall(function()
-                     if game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") then
-                         for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                             if v.Name == "Terrorshark" then
-                                 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                     repeat task.wait(_G.FastAttackDelay)
-                                         AutoHaki()
-                                         EquipWeapon(_G.SelectWeapon)
-                                         v.HumanoidRootPart.CanCollide = false
-                                         v.Humanoid.WalkSpeed = 0
-                                         v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                         AttackNoCD()
-                                         if game.Players.LocalPlayer.Character.Humanoid.Health < 2000 then
-                                             fastpos(v.HumanoidRootPart.CFrame * CFrame.new(0, 300, 0))
-                                             wait(10)
-                                         else
-                                             topos(v.HumanoidRootPart.CFrame * CFrame.new(0, 55, 0))
-                                         end
-                                         TerrorSharkpos = v.HumanoidRootPart.CFrame
-                                     until not  _G.AutoTerrorshark or not v.Parent or v.Humanoid.Health <= 0
-                                 end
-                             end
-                         end
-                     end
-                 end)
-             end
-         end
-     end)
+    -- spawn(function()
+    --     while wait() do
+    --         if  _G.AutoTerrorshark and World3 then
+    --             pcall(function()
+    --                 if game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") then
+    --                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+    --                         if v.Name == "Terrorshark" then
+    --                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+    --                                 repeat task.wait(_G.FastAttackDelay)
+    --                                     AutoHaki()
+    --                                     EquipWeapon(_G.SelectWeapon)
+    --                                     v.HumanoidRootPart.CanCollide = false
+    --                                     v.Humanoid.WalkSpeed = 0
+    --                                     v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+    --                                     AttackNoCD()
+    --                                     if game.Players.LocalPlayer.Character.Humanoid.Health < 2000 then
+    --                                         fastpos(v.HumanoidRootPart.CFrame * CFrame.new(0, 300, 0))
+    --                                         wait(10)
+    --                                     else
+    --                                         topos(v.HumanoidRootPart.CFrame * CFrame.new(0, 55, 0))
+    --                                     end
+    --                                     TerrorSharkpos = v.HumanoidRootPart.CFrame
+    --                                 until not  _G.AutoTerrorshark or not v.Parent or v.Humanoid.Health <= 0
+    --                             end
+    --                         end
+    --                     end
+    --                 end
+    --             end)
+    --         end
+    --     end
+    -- end)
 
-    spawn(function()
-         while wait() do
-             pcall(function()
-                 if _G.AutoTerrorshark then
-                     if (game:GetService("Workspace").Enemies["Terrorshark"].HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position).Magnitude <= 150 then
-                         repeat wait()
-                         AttackNoCD()
-                         until not _G.AutoTerrorshark
-                     end
-                 end
-             end)
-         end
-     end)
+    -- spawn(function()
+    --     while wait() do
+    --         pcall(function()
+    --             if _G.AutoTerrorshark then
+    --                 if (game:GetService("Workspace").Enemies["Terrorshark"].HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position).Magnitude <= 150 then
+    --                     repeat wait()
+    --                     AttackNoCD()
+    --                     until not _G.AutoTerrorshark
+    --                 end
+    --             end
+    --         end)
+    --     end
+    -- end)
+
+    function UpDownPos(pos)
+        fastpos(pos * CFrame.new(0, 40, 0))
+        wait(2)
+        fastpos(pos * CFrame.new(0, 300, 0))
+        wait(3)
+    end
 
     
 Page5.CreateToggle({
@@ -10039,33 +10061,31 @@ Page5.CreateToggle({
         Skillaimbot = false
     end
 
-    
-
-    spawn(function()
-             while wait() do
-                 pcall(function()
-                         if _G.RelzFishBoat then
-                             for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                             if game:GetService("Workspace").Enemies:FindFirstChild("FishBoat") then
-                                 repeat task.wait()
-                                     CFrameFishBoat = v.Engine.CFrame * CFrame.new(0, 10, 0)
-                                     if (v.Engine.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-                                         _G.SeaSkill = true
-                                     else
-                                         _G.SeaSkill = false
-                                     end
-                                     topos(CFrameFishBoat)
-                                     Skillaimbot = true
-                                     AimBotSkillPosition = v.Engine.Position
-                                 until not v.Parent or v.Health.Value < 0 or not game:GetService("Workspace").Enemies:FindFirstChild("FishBoat") or not v:FindFirstChild("Engine") or not _G.RelzFishBoat
-                                 Skillaimbot = false
-                                 _G.SeaSkill = false
-                             end
-                         end
-                     end
-                 end)
-             end
-         end)
+    -- spawn(function()
+    --         while wait() do
+    --             pcall(function()
+    --                     if _G.RelzFishBoat then
+    --                         for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+    --                         if game:GetService("Workspace").Enemies:FindFirstChild("FishBoat") then
+    --                             repeat task.wait()
+    --                                 CFrameFishBoat = v.Engine.CFrame * CFrame.new(0, 10, 0)
+    --                                 if (v.Engine.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
+    --                                     _G.SeaSkill = true
+    --                                 else
+    --                                     _G.SeaSkill = false
+    --                                 end
+    --                                 topos(CFrameFishBoat)
+    --                                 Skillaimbot = true
+    --                                 AimBotSkillPosition = v.Engine.Position
+    --                             until not v.Parent or v.Health.Value < 0 or not game:GetService("Workspace").Enemies:FindFirstChild("FishBoat") or not v:FindFirstChild("Engine") or not _G.RelzFishBoat
+    --                             Skillaimbot = false
+    --                             _G.SeaSkill = false
+    --                         end
+    --                     end
+    --                 end
+    --             end)
+    --         end
+    --     end)
 
 Page5.CreateToggle({
 	Name = "Auto Terrorshark",
@@ -10096,33 +10116,33 @@ Page5.CreateToggle({
 
     
         
-         spawn(function()
-             while wait() do
-                 if _G.AutoSeaBest then
-                         pcall(function()
-                         if game:GetService("Workspace"):FindFirstChild("SeaBeasts") then
-                             for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
-                                 if CheckSeaBeast() then
-                                 repeat wait()
-                                     CFrameSeaBeast = v.HumanoidRootPart.CFrame * CFrame.new(0,400,0)
-                                     if (CFrameSeaBeast.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position).Magnitude <= 50 then
-                                         _G.SeaSkill = true
-                                     else
-                                         _G.SeaSkill = false
-                                     end
-                                     Skillaimbot = true
-                                     AimBotSkillPosition = v.HumanoidRootPart.CFrame.Position
-                                     topos(CFrameSeaBeast)
-                                 until not _G.AutoSeaBest or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health < 0 or not v.Parent
-                                 Skillaimbot = false
-                                 _G.SeaSkill = false
-                                 end
-                             end
-                         end
-                         end)
-                     end
-                 end
-             end)
+        -- spawn(function()
+        --     while wait() do
+        --         if _G.AutoSeaBest then
+        --                 pcall(function()
+        --                 if game:GetService("Workspace"):FindFirstChild("SeaBeasts") then
+        --                     for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+        --                         if CheckSeaBeast() then
+        --                         repeat wait()
+        --                             CFrameSeaBeast = v.HumanoidRootPart.CFrame * CFrame.new(0,400,0)
+        --                             if (CFrameSeaBeast.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position).Magnitude <= 50 then
+        --                                 _G.SeaSkill = true
+        --                             else
+        --                                 _G.SeaSkill = false
+        --                             end
+        --                             Skillaimbot = true
+        --                             AimBotSkillPosition = v.HumanoidRootPart.CFrame.Position
+        --                             topos(CFrameSeaBeast)
+        --                         until not _G.AutoSeaBest or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health < 0 or not v.Parent
+        --                         Skillaimbot = false
+        --                         _G.SeaSkill = false
+        --                         end
+        --                     end
+        --                 end
+        --                 end)
+        --             end
+        --         end
+        --     end)
 end
 
 Page5.CreateLable({
@@ -10184,8 +10204,8 @@ Page5.CreateToggle({
 	Name = "Noclip Rock",
 	Dis = "Noclip Boat",
 	Value = false,
-	Callback = function(v)
-	_G.NoClipRock = v
+	Callback = function(state)
+	_G.NoClipRock = state
 		print(v)
 	end,
 }) 
