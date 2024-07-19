@@ -275,7 +275,7 @@ function library.Create(options)
 	TextLabel_6.Size = UDim2.new(0, 200, 0, 50)
 	TextLabel_6.ZIndex = 2
 	TextLabel_6.Font = Enum.Font.FredokaOne
-	TextLabel_6.Text = "https://discord.com/invite/h5qFjFJ5"
+	TextLabel_6.Text = "https://discord.com/invite/ZfFyMpWg"
 	TextLabel_6.TextColor3 = Color3.fromRGB(189, 198, 212)
 	TextLabel_6.TextSize = 14.000
 	TextLabel_6.TextTransparency = 1.000
@@ -2162,7 +2162,7 @@ end
 
 -- Dark Blue Theme
 local Windown = library.Create({
-	Title = "X-Sea Up dis.gg/h5qFjFJ5", Logo = 17851124858,
+	Title = "X-Sea Discord.gg/ZfFyMpWg", Logo = 17851124858,
 	CornerRadius = 2, UISize = {
 		X = 600,
 		Y = 400
