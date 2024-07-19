@@ -6094,7 +6094,7 @@ Page2.CreateSlider({
 	Name = "Distance",
 	Max = 50,
 	Min = 1,	
-	Value = 21,
+	Value = 20,
 	Format = function(v)
 	PosY = v
 		print(v)
@@ -6130,9 +6130,9 @@ spawn(function()
                 if _G.BringMode == "Low" then
                     _G.BringMode = 250
                 elseif _G.BringMode == "Normal" then
-                    _G.BringMode = 300
+                    _G.BringMode = 375
                 elseif _G.BringMode == "High" then
-                    _G.BringMode = 350
+                    _G.BringMode = 500
                 end
             end)
         end
@@ -6143,8 +6143,8 @@ Page2.CreateToggle({
 	Name = "Fast Attack",
 	Dis = "Fast Attack",
 	Value = true,
-	Callback = function(valuw)
-	_G.FastAttack = value
+	Callback = function(x)
+	_G.FastAttack = x
 		print(v)
 	end,
 })
@@ -6153,8 +6153,8 @@ Page2.CreateToggle({
 	Name = "Attack Aura",
 	Dis = "Attack Near",
 	Value = true,
-	Callback = function(value)
-	_G.AttackMob = value
+	Callback = function(x)
+	_G.AttackMob = x
 		print(v)
 	end,
 })
@@ -6251,14 +6251,14 @@ end
 
 Page2.CreateDropdown({
 	Name = "Fast Attack Delay",
-	Value = "0.03",
-	List = {0, 0.03, 0.150, 0.165, 0.175, 0.200, 0.250},
+	Value = "0.110",
+	List = {0, 0.110, 0.150, 0.165, 0.175, 0.200, 0.250},
 	Callback = function(v)
 	_G.FastAttackDelay = v
 		print(v)
 	end,
 })
-_G.FastAttackDelay = "0.03"
+_G.FastAttackDelay = "0.110"
 
 
 Page2.CreateToggle({
