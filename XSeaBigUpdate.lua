@@ -4363,34 +4363,21 @@ end
 --     end
     
     
-spawn(function()
-    while wait(.1) do
-		if Type == 1 then
-			Pos = CFrame.new(0,PosY,-5)
-		elseif Type == 2 then
-			Pos = CFrame.new(5,PosY,0)
-		elseif Type == 3 then
-			Pos = CFrame.new(0,PosY,5)	
-		elseif Type == 4 then
-			Pos = CFrame.new(-5,PosY,0)
-        end
+    spawn(function()
+        while wait() do
+            if _G.SpinPos then
+                Pos = CFrame.new(0,PosY,-20)
+                wait(0.1)
+                Pos = CFrame.new(-20,PosY,0)
+                wait(0.1)
+                Pos = CFrame.new(0,PosY,20)
+                wait(0.1)
+                Pos = CFrame.new(20,PosY,0)
+            else
+                Pos = CFrame.new(0,PosY,0)
+            end
         end
     end)
-
-spawn(function()
-    while wait() do
-        Type = 1
-        wait()
-        Type = 2
-        wait()
-        Type = 3
-        wait()
-        Type = 4
-        wait()
-        Type = 5
-        wait()
-    end
-end)
 
 
     -- spawn(function()
@@ -6090,6 +6077,17 @@ Page2.CreateLable({
 	Name = "Settings"
 })
 
+
+Page2.CreateToggle({
+	Name = "Spin Position When Farm",
+	Dis = "",
+	Value = true,
+	Callback = function(v)
+	    _G.SpinPos = v
+		print(v)
+	end,
+})
+
 Page2.CreateSlider({
 	Name = "Distance",
 	Max = 50,
@@ -6251,14 +6249,14 @@ end
 
 Page2.CreateDropdown({
 	Name = "Fast Attack Delay",
-	Value = "0.110",
+	Value = "0.200",
 	List = {0, 0.110, 0.150, 0.165, 0.175, 0.200, 0.250},
 	Callback = function(v)
 	_G.FastAttackDelay = v
 		print(v)
 	end,
 })
-_G.FastAttackDelay = "0.110"
+_G.FastAttackDelay = "0.200"
 
 
 Page2.CreateToggle({
@@ -6352,7 +6350,7 @@ Page2.CreateSlider({
 	Name = "Tween Speed",
 	Max = 350,
 	Min = 1,	
-	Value = 340,
+	Value = 280,
 	Format = function(v)
 	    TweenSpeed = v
 		print(v)
@@ -9184,11 +9182,11 @@ Page4.CreateToggle({
 
                         if not game:GetService("Workspace").Enemies:FindFirstChild("rip_indra True Form") or not game:GetService("Workspace").Enemies:FindFirstChild("rip_indra") then
                             repeat wait(1)
-                            Alert:create("Rip Indra Not Spawn")
+                            print("Rip Indra Not Spawn")
                             until not _G.Autotushita or game:GetService("Workspace").Enemies:FindFirstChild("rip_indra True Form") or not game:GetService("Workspace").Enemies:FindFirstChild("rip_indra")
                         elseif not game:GetService("Workspace").Enemies:FindFirstChild("Longma") then
-                            repeat wait(1)
-                            Alert:create("Longma Not Spawn")
+                            repeat wait(1) 
+                            print("Longma Not Spawn")
                             until not _G.Autotushita or game:GetService("Workspace").Enemies:FindFirstChild("Longma")
                         end
                     if ripIndraSpawn and longmaSpawn then
