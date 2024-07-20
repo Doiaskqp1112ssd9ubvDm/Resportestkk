@@ -2162,7 +2162,7 @@ end
 
 -- Dark Blue Theme
 local Windown = library.Create({
-	Title = "X-Sea Discord.gg/ZfFyMpWg", Logo = 17851124858,
+	Title = "X-Seaa Discord.gg/ZfFyMpWg", Logo = 17851124858,
 	CornerRadius = 2, UISize = {
 		X = 600,
 		Y = 400
@@ -6078,21 +6078,12 @@ Page2.CreateLable({
 })
 
 
-Page2.CreateToggle({
-	Name = "Spin Position When Farm",
-	Dis = "",
-	Value = true,
-	Callback = function(v)
-	    _G.SpinPos = v
-		print(v)
-	end,
-})
 
 Page2.CreateSlider({
 	Name = "Distance",
 	Max = 50,
 	Min = 1,	
-	Value = 20,
+	Value = 25,
 	Format = function(v)
 	PosY = v
 		print(v)
@@ -6143,6 +6134,16 @@ Page2.CreateToggle({
 	Value = true,
 	Callback = function(x)
 	_G.FastAttack = x
+		print(v)
+	end,
+})
+
+Page2.CreateToggle({
+	Name = "Spin Position When Farm",
+	Dis = "",
+	Value = true,
+	Callback = function(v)
+	    _G.SpinPos = v
 		print(v)
 	end,
 })
