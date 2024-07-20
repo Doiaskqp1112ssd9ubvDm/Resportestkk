@@ -6150,8 +6150,8 @@ Page2.CreateToggle({
 
 Page2.CreateToggle({
 	Name = "Attack Aura",
-	Dis = "Attack Near",
-	Value = true,
+	Dis = "Attack Near | Auto Click",
+	Value = false,
 	Callback = function(x)
 	_G.AttackMob = x
 		print(v)
@@ -6160,7 +6160,7 @@ Page2.CreateToggle({
 
     spawn(function()
         while wait(_G.FastAttackDelay) do
-            if _G.AttackMob and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
+            if _G.FastAttack and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
                 pcall(function()
                     AttackNoCD()
                 end)
