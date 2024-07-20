@@ -6094,8 +6094,8 @@ Page2.CreateToggle({
 	Name = "Bring Mob",
 	Dis = "Bring Mob",
 	Value = true,
-	Callback = function(Mag)
-	_G.BringMonster = Mag
+	Callback = function(v)
+	_G.BringMonster = v
 		print(v)
 	end,
 })
@@ -6105,12 +6105,12 @@ Page2.CreateDropdown({
 	Name = "Bring Mob Mode",
 	Value = "Normal",
 	List = {"Low", "Normal", "High"},
-	Callback = function(value)
-	_G.BringMode = value
+	Callback = function(v)
+	_G.BringMode = v
 		print(v)
 	end,
 })
-_G.BringMode = "High"
+_G.BringMode = "Low"
 
 spawn(function()
     while wait(.1) do
