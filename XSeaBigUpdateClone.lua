@@ -4361,34 +4361,21 @@ end
 --     end
     
     
-spawn(function()
-    while wait(.1) do
-		if Type == 1 then
-			Pos = CFrame.new(0,PosY,-5)
-		elseif Type == 2 then
-			Pos = CFrame.new(5,PosY,0)
-		elseif Type == 3 then
-			Pos = CFrame.new(0,PosY,5)	
-		elseif Type == 4 then
-			Pos = CFrame.new(-5,PosY,0)
-        end
+    spawn(function()
+        while wait() do
+            if _G.SpinPos then
+                Pos = CFrame.new(0,PosY,-20)
+                wait(0.1)
+                Pos = CFrame.new(-20,PosY,0)
+                wait(0.1)
+                Pos = CFrame.new(0,PosY,20)
+                wait(0.1)
+                Pos = CFrame.new(20,PosY,0)
+            else
+                Pos = CFrame.new(0,PosY,0)
+            end
         end
     end)
-
-spawn(function()
-    while wait() do
-        Type = 1
-        wait()
-        Type = 2
-        wait()
-        Type = 3
-        wait()
-        Type = 4
-        wait()
-        Type = 5
-        wait()
-    end
-end)
 
 
     -- spawn(function()
@@ -4722,6 +4709,16 @@ FarmMode = "Quest"
 	Callback = function(v)
 	    _G.AutoFarm = v
 	    StopTween(_G.AutoFarm)
+		print(v)
+	end,
+})
+
+Page1.CreateToggle({
+	Name = "Spin Position When Farm",
+	Dis = "",
+	Value = true,
+	Callback = function(v)
+	    _G.SpinPos = v
 		print(v)
 	end,
 })
@@ -6255,9 +6252,9 @@ end
     
 Page2.CreateSlider({
 	Name = "Tween Speed",
-	Max = 350,
+	Max = 365,
 	Min = 1,	
-	Value = 340,
+	Value = 280,
 	Format = function(v)
 	    TweenSpeed = v
 		print(v)
@@ -9888,7 +9885,7 @@ Page5.CreateToggle({
 Page5.CreateToggle({
 	Name = "Auto Farm Shark",
 	Dis = "Kill Shark",
-	Value = false,
+	Value = true,
 	Callback = function(v)
 	_G.AutoKillShark = v
 	StopTween(_G.AutoKillShark)
@@ -9899,7 +9896,7 @@ Page5.CreateToggle({
 Page5.CreateToggle({
 	Name = "Auto Farm Piranha",
 	Dis =  "Kill piranha",
-	Value = false,
+	Value = true,
 	Callback = function(v)
 	_G.AutoKillPiranha = v
 	StopTween(_G.AutoKillPiranha)
@@ -10045,11 +10042,21 @@ Page5.CreateToggle({
         wait(3)
     end
 
+Page5.CreateToggle({
+	Name = "Auto Kill Fish Crew",
+	Dis = "Kill Fish Crew",
+	Value = true,
+	Callback = function(v)
+	_G.AutoKillFishCrew = v
+	StopTween(_G.AutoKillFishCrew)
+		print(v)
+	end,
+}) 
     
 Page5.CreateToggle({
 	Name = "Auto Farm Ghost Ship",
 	Dis = "Farm Ghost Ship",
-	Value = false,
+	Value = true,
 	Callback = function(v)
 	_G.RelzFishBoat = v
 	StopTween(_G.RelzFishBoat)
@@ -10090,7 +10097,7 @@ Page5.CreateToggle({
 Page5.CreateToggle({
 	Name = "Auto Terrorshark",
 	Dis = "Kill Terrorshark",
-	Value = false,
+	Value = true,
 	Callback = function(v)
 	_G.AutoTerrorshark = v
 	StopTween(_G.AutoTerrorshark)
@@ -10101,7 +10108,7 @@ Page5.CreateToggle({
 Page5.CreateToggle({
 	Name = "Auto Seabeast",
 	Dis = "Kill Sea Beast",
-	Value = false,
+	Value = true,
 	Callback = function(v)
 	_G.AutoSeaBest = v
 	StopTween(_G.AutoSeaBest)
@@ -10113,7 +10120,17 @@ Page5.CreateToggle({
             Skillaimbot = false
         end
 
-
+    function CheckSeaBeast()
+        if game:GetService("Workspace"):FindFirstChild("SeaBeasts") then
+            for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+                if v:FindFirstChild("Humanoid") or v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health < 0 then
+                    return true
+                end
+            end
+        end
+        return false
+    end
+    
     
         
         -- spawn(function()
