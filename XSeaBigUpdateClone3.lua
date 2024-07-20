@@ -4203,56 +4203,107 @@ end
     end
     
     function BTP(p)
-    	pcall(function()
-	    	if (p.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >= 1500 and not Auto_Raid and game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
-				repeat wait()
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p
-					wait(.05)
-					game.Players.LocalPlayer.Character.Head:Destroy()
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p
-				until (p.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 1500 and game.Players.LocalPlayer.Character.Humanoid.Health > 0
-			end
-		end)
-	end
+	repeat wait(1)
+		game.Players.LocalPlayer.Character.Humanoid:ChangeState(15)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = P
+		task.wait()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = P
+	until (P.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500
+end
 
 
 function TelePPlayer(P)
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = P
 end
+
+function WaitHRP(q0) 
+    if not q0 then return end
+    return q0.Character:WaitForChild("HumanoidRootPart", 9) 
+end
     
 function TP(Pos)
-    Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-    game:GetService("TweenService"):Create(
-        game.Players.LocalPlayer.Character.HumanoidRootPart,
-        TweenInfo.new(Distance/TweenSpeed, Enum.EasingStyle.Linear),
-        {CFrame = Pos}
-    ):Play()
+        if game.Players.LocalPlayer.Character.Humanoid.Health > 0 and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+        local Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+        if not Pos then 
+            return 
+        end
+        if not game.Players.LocalPlayer.Character:FindFirstChild("PartTele") then
+            local PartTele = Instance.new("Part", game.Players.LocalPlayer.Character) -- Create part
+            PartTele.Size = Vector3.new(10,1,10)
+            PartTele.Name = "PartTele"
+            PartTele.Anchored = true
+            PartTele.Transparency = 1
+            PartTele.CanCollide = true
+            PartTele.CFrame = WaitHRP(game.Players.LocalPlayer).CFrame 
+            PartTele:GetPropertyChangedSignal("CFrame"):Connect(function()
+                task.wait()
+                WaitHRP(game.Players.LocalPlayer).CFrame = PartTele.CFrame
+            end)
+        end
+        local didididididi = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PartTele, TweenInfo.new(Distance/, Enum.EasingStyle.Linear), {CFrame = Pos})
+        didididididi:Play()
+        if Distance <= 250 then
+                didididididi:Cancel()
+                game.Players.LocalPlayer.Character.PartTele.CFrame = Pos
+            end
+            didididididi:Play()
+    end
 end
+
 
     function TP1(Pos)
-        Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-        game:GetService("TweenService"):Create(
-            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
-            TweenInfo.new(Distance/TweenSpeed, Enum.EasingStyle.Linear),
-            {CFrame = Pos}
-        ):Play()
-end
-
-    local stoppos = {}
-    function topos(Pos)
-        Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-        tween = game:GetService("TweenService"):Create(
-            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
-            TweenInfo.new(Distance/TweenSpeed, Enum.EasingStyle.Linear),
-            {CFrame = Pos}
-        ):Play()
-
-        function stoppos:Stop()
-            tween:Cancel()
+            if game.Players.LocalPlayer.Character.Humanoid.Health > 0 and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+        local Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+        if not Pos then 
+            return 
         end
-    
-        return stoppos
+        if not game.Players.LocalPlayer.Character:FindFirstChild("PartTele") then
+            local PartTele = Instance.new("Part", game.Players.LocalPlayer.Character) -- Create part
+            PartTele.Size = Vector3.new(10,1,10)
+            PartTele.Name = "PartTele"
+            PartTele.Anchored = true
+            PartTele.Transparency = 1
+            PartTele.CanCollide = true
+            PartTele.CFrame = WaitHRP(game.Players.LocalPlayer).CFrame 
+            PartTele:GetPropertyChangedSignal("CFrame"):Connect(function()
+                task.wait()
+                WaitHRP(game.Players.LocalPlayer).CFrame = PartTele.CFrame
+            end)
+        end
+        local didididididi = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PartTele, TweenInfo.new(Distance/TweenSpeed, Enum.EasingStyle.Linear), {CFrame = Pos})
+        didididididi:Play()
+        if Distance <= 250 then
+                didididididi:Cancel()
+                game.Players.LocalPlayer.Character.PartTele.CFrame = Pos
+            end
+            didididididi:Play()
+    end
 end
+
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            if game.Players.LocalPlayer.Character.Humanoid.Health <= 0 or not plr.Character:FindFirstChild("HumanoidRootPart") then
+                if game.Players.LocalPlayer.Character:FindFirstChild("PartTele") then
+                    game.Players.LocalPlayer.Character:FindFirstChild("PartTele"):Destroy()
+                end
+            end
+        end)
+    end
+end)
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            if game.Players.LocalPlayer.Character:FindFirstChild("PartTele") then
+                if (plr.Character.HumanoidRootPart.Position - plr.Character:FindFirstChild("PartTele").Position).Magnitude >= 100 then
+                    game.Players.LocalPlayer.Character:FindFirstChild("PartTele"):Destroy()
+                end
+            end
+        end)
+    end
+end)
+
+
 
     function fastpos(Pos)
         Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
@@ -4726,7 +4777,7 @@ Page1.CreateToggle({
 Page1.CreateToggle({
 	Name = "Safe Mode",
 	Dis = "avoid bounty hunting ",
-	Value = true,
+	Value = false,
 	Callback = function(S)
 	    _G.Safe_Mode = S
 	    StopTween(_G.Safe_Mode)
@@ -6260,7 +6311,26 @@ Page2.CreateSlider({
 		print(v)
 	end,
 })
-
+    spawn(function()
+    game:GetService("RunService").Heartbeat:Connect(function()
+        if _G.AutoAdvanceDungeon or _G.AutoDoughtBoss or _G.Auto_DungeonMobAura or _G.AutoFarmChest or _G.AutoFactory or _G.AutoFarmBossHallow or _G.AutoFarmSwanGlasses or _G.AutoLongSword or _G.AutoBlackSpikeycoat or _G.AutoElectricClaw or _G.AutoFarmGunMastery or _G.AutoHolyTorch or _G.AutoLawRaid or _G.AutoFarmBoss or _G.AutoTwinHooks or _G.AutoOpenSwanDoor or _G.AutoDragon_Trident or _G.AutoSaber or _G.NoClip or _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.TeleportIsland or _G.Auto_EvoRace or _G.AutoFarmAllMsBypassType or _G.AutoObservationv2 or _G.AutoMusketeerHat or _G.AutoEctoplasm or _G.AutoRengoku or _G.Auto_Rainbow_Haki or _G.AutoObservation or _G.AutoDarkDagger or _G.Safe_Mode or _G.MasteryFruit or _G.AutoBudySword or _G.AutoOderSword or _G.AutoBounty or _G.AutoAllBoss or _G.Auto_Bounty or _G.AutoSharkman or _G.Auto_Mastery_Fruit or _G.Auto_Mastery_Gun or _G.Auto_Dungeon or _G.Auto_Cavender or _G.Auto_Pole or _G.Auto_Kill_Ply or _G.Auto_Factory or _G.AutoSecondSea or _G.TeleportPly or _G.AutoBartilo or _G.Auto_DarkBoss or _G.GrabChest or _G.AutoFarmBounty or _G.Holy_Torch or _G.AutoFarm or _G.Clip or _G.AutoElitehunter or _G.AutoThirdSea or _G.Auto_Bone or _G.Autoheart or _G.Autodoughking or _G.AutoFarmMaterial or _G.AutoNevaSoulGuitar or _G.Auto_Dragon_Trident or _G.Autotushita or _G.Autowaden or _G.Autogay or _G.Autopole or _G.Autosaw or _G.AutoObservationHakiV2 or _G.AutoFarmNearest or _G.AutoCarvender or _G.AutoTwinHook or AutoMobAura or _G.Tweenfruit or _G.TeleportNPC or _G.AutoKai or _G.Leather or _G.Auto_Wing or _G.Umm or _G.Makori_gay or Radioactive or Fish or Gunpowder or Dragon_Scale or Cocoafarm or Scrap or MiniHee or _G.AutoFarmSeabaest or Auto_Cursed_Dual_Katana or _G.AutoFarmMob or _G.AutoMysticIsland or _G.AutoFarmDungeon or _G.RaidPirate or _G.AutoQuestRace or _G.TweenMGear or getgenv().AutoFarm or _G.AutoPlayerHunter or _G.AutoFactory or _G.Namfon or _G.AutoSwordMastery or _G.Auto_Seabest or _G.AutoSeaBest or _G.AutoKillTial or _G.Auto_Saber or _G.Position_Spawn or _G.TPB or _G.Farmfast or _G.AutoRace or _G.RaidPirate or Open_Color_Haki or _G.AutoTerrorshark or FarmShark or _G.farmpiranya or _G.SailBoat or _G.AutoFarmChest or _G.ChestBypass or _G.Fish_Crew_Member == true or _G.AutoFarmAllBoss or _G.TeleportKitsune or _G.RelzFishBoat or _G.CollectAzure or _G.AutoDarkCoat then
+            if not game:GetService("Workspace"):FindFirstChild("LOL") then
+                local LOL = Instance.new("Part")
+                LOL.Name = "LOL"
+                LOL.Parent = game.Workspace
+                LOL.Anchored = true
+                LOL.Transparency = 1
+                LOL.Size = Vector3.new(5,2,5)
+            elseif game:GetService("Workspace"):FindFirstChild("LOL") then
+                game.Workspace["LOL"].CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, -3.6, 0)
+            end
+        else
+            if game:GetService("Workspace"):FindFirstChild("LOL") then
+                game:GetService("Workspace"):FindFirstChild("LOL"):Destroy()
+            end
+        end
+    end)
+    
 Page2.CreateLable({
 	Name = "Mastery Set"
 })
