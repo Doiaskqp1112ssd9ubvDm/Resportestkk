@@ -275,7 +275,7 @@ function library.Create(options)
 	TextLabel_6.Size = UDim2.new(0, 200, 0, 50)
 	TextLabel_6.ZIndex = 2
 	TextLabel_6.Font = Enum.Font.FredokaOne
-	TextLabel_6.Text = "https://discord.com/invite/ZfFyMpWg"
+	TextLabel_6.Text = "https://discord.com/invite/xaZ9CZtJ"
 	TextLabel_6.TextColor3 = Color3.fromRGB(189, 198, 212)
 	TextLabel_6.TextSize = 14.000
 	TextLabel_6.TextTransparency = 1.000
@@ -2162,7 +2162,7 @@ end
 
 -- Dark Blue Theme
 local Windown = library.Create({
-	Title = "X-Seaa Discord.gg/ZfFyMpWg", Logo = 17851124858,
+	Title = "X-Seaa Discord.gg/xaZ9CZtJ", Logo = 17851124858,
 	CornerRadius = 2, UISize = {
 		X = 600,
 		Y = 400
@@ -6083,7 +6083,7 @@ Page2.CreateSlider({
 	Name = "Distance",
 	Max = 50,
 	Min = 1,	
-	Value = 25,
+	Value = 30,
 	Format = function(v)
 	PosY = v
 		print(v)
@@ -6105,12 +6105,12 @@ Page2.CreateDropdown({
 	Name = "Bring Mob Mode",
 	Value = "Normal",
 	List = {"Low", "Normal", "High"},
-	Callback = function(v)
-	_G.BringMode = v
+	Callback = function(value)
+	_G.BringMode = value
 		print(v)
 	end,
 })
-_G.BringMode = "Low"
+_G.BringMode = "Normal"
 
 spawn(function()
     while wait(.1) do
