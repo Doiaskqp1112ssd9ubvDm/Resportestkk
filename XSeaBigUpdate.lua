@@ -587,8 +587,8 @@ function library.Create(options)
 		TextLabel.BorderSizePixel = 0
 		TextLabel.Size = UDim2.new(1, 0, 1, 0)
 		TextLabel.Text = TapTitle
-		Text.TextColor3 = TapC
-		Text.TextSize = 11.000
+		TextLabel.TextColor3 = TapC
+		TextLabel.TextSize = 11.000
 		TextLabel.TextStrokeTransparency = 0.900
 		TextLabel.FontFace = Font.new("rbxasset://fonts/families/Ubuntu.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
 
@@ -2165,8 +2165,8 @@ local Windown = library.Create({
 		X = 600,
 		Y = 400
 	},UIColor = {
-		['Shadown'] = Color3.fromRGB(255, 255, 255),
-		['MainBackground'] = Color3.fromRGB(255, 255, 255),
+		['Shadown'] = Color3.fromRGB(0, 0, 0),
+		['MainBackground'] = Color3.fromRGB(0, 0, 0),
 		['Background2'] = Color3.fromRGB(255, 255, 255),
 		['ToggleO'] = Color3.fromRGB(36, 90, 91),
 		['TapButtonColor'] = Color3.fromRGB(63, 136, 134),
@@ -4364,13 +4364,13 @@ end
     spawn(function()
         while wait() do
             if _G.SpinPos then
-                Pos = CFrame.new(0,PosY,-10)
+                Pos = CFrame.new(0,PosY,-20)
                 wait(0.1)
-                Pos = CFrame.new(-10,PosY,0)
+                Pos = CFrame.new(-20,PosY,0)
                 wait(0.1)
                 Pos = CFrame.new(0,PosY,10)
                 wait(0.1)
-                Pos = CFrame.new(15,PosY,0)
+                Pos = CFrame.new(20,PosY,0)
             else
                 Pos = CFrame.new(0,PosY,0)
             end
@@ -6081,7 +6081,7 @@ Page2.CreateSlider({
 	Name = "Distance",
 	Max = 50,
 	Min = 1,	
-	Value = 30,
+	Value = 25,
 	Format = function(v)
 	PosY = v
 		print(v)
@@ -6137,6 +6137,28 @@ Page2.CreateToggle({
 })
 
 Page2.CreateToggle({
+	Name = "Fast Attack two",
+	Dis = "Fast Attack two",
+	Value = true,
+	Callback = function(x)
+	_G.FastAttack2 = x
+		print(v)
+	end,
+})
+
+    spawn(function()
+    while wait(.1) do
+        if _G.FastAttack2 then
+            pcall(function()
+                repeat task.wait(_G.FastAttackDelay)
+                    AttackNoCD()
+                until not _G.FastAttack2
+            end)
+        end
+    end
+end)
+
+Page2.CreateToggle({
 	Name = "Fast Attack 4",
 	Dis = "Fast Attack 4",
 	Value = true,
@@ -6150,7 +6172,7 @@ Page2.CreateToggle({
     while wait(.1) do
         if _G.FastAttack4 then
             pcall(function()
-                repeat task.wait(0.2)
+                repeat task.wait(0.1)
                     AttackNoCD()
                 until not _G.FastAttack4
             end)
@@ -6171,7 +6193,7 @@ Page2.CreateToggle({
 Page2.CreateToggle({
 	Name = "Attack Aura",
 	Dis = "Attack Near | Auto Click",
-	Value = true,
+	Value = false,
 	Callback = function(x)
 	_G.AttackMob = x
 		print(v)
@@ -6180,7 +6202,7 @@ Page2.CreateToggle({
 
     spawn(function()
         while wait(_G.FastAttackDelay) do
-            if _G.AttackMob and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
+            if _G.FastAttack4 and _G.FastAttack not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
                 pcall(function()
                     AttackNoCD()
                 end)
@@ -9541,10 +9563,6 @@ Page5.CreateSlider({
         end)
     end)
 
-Page1.CreateLable({
-	Name = "Note: turn on auto sail boat   "
-})
-
 Page5.CreateToggle({
 	Name = "Auto Sail Boat",
 	Dis = "Auto Sail Boat Sea",
@@ -10155,9 +10173,24 @@ Page5.CreateToggle({
     --     end
     -- end)
 
-        
+    spawn(function()
+        while wait() do
+            if _G.AutoTerrorshark then
+                Pos = CFrame.new(0,PosY,-20)
+                wait(0.1)
+                Pos = CFrame.new(-20,PosY,0)
+                wait(0.1)
+                Pos = CFrame.new(0,PosY,10)
+                wait(0.1)
+                Pos = CFrame.new(20,PosY,0)
+            else
+                Pos = CFrame.new(0,PosY,0)
+            end
+        end
+    end)
+    
     function UpDownPos(pos)
-        fastpos(pos * CFrame.new(0, 20, 0))
+        fastpos(pos * CFrame.new(0, 40, 0))
         wait(2)
         fastpos(pos * CFrame.new(0, 300, 0))
         wait(3)
@@ -10177,7 +10210,7 @@ Page5.CreateToggle({
 Page5.CreateToggle({
 	Name = "Auto Farm Ghost Ship",
 	Dis = "Farm Ghost Ship",
-	Value = true,
+	Value = false,
 	Callback = function(v)
 	_G.RelzFishBoat = v
 	StopTween(_G.RelzFishBoat)
@@ -10231,7 +10264,7 @@ Page5.CreateToggle({
 Page5.CreateToggle({
 	Name = "Auto Seabeast",
 	Dis = "Kill Sea Beast",
-	Value = true,
+	Value = false,
 	Callback = function(v)
 	_G.AutoSeaBest = v
 	StopTween(_G.AutoSeaBest)
