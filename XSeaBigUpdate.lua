@@ -2165,7 +2165,7 @@ local Windown = library.Create({
 		X = 600,
 		Y = 400
 	},UIColor = {
-		['Shadown'] = Color3.fromRGB(0, 0, 0),
+		['Shadown'] = Color3.fromRGB(255, 255, 255),
 		['MainBackground'] = Color3.fromRGB(255, 255, 255),
 		['Background2'] = Color3.fromRGB(255, 255, 255),
 		['ToggleO'] = Color3.fromRGB(36, 90, 91),
@@ -10155,23 +10155,7 @@ Page5.CreateToggle({
     --     end
     -- end)
 
-    spawn(function()
-        while wait() do
-            if _G.AutoTerrorshark then
-                Pos = CFrame.new(0,PosY,-20)
-                wait(0.1)
-                Pos = CFrame.new(-20,PosY,0)
-                wait(0.1)
-                Pos = CFrame.new(0,PosY,10)
-                wait(0.1)
-                Pos = CFrame.new(20,PosY,0)
-            else
-                Pos = CFrame.new(0,PosY,0)
-            end
-        end
-    end)
-    
-    
+        
     function UpDownPos(pos)
         fastpos(pos * CFrame.new(0, 20, 0))
         wait(2)
