@@ -6081,7 +6081,7 @@ Page2.CreateSlider({
 	Name = "Distance",
 	Max = 50,
 	Min = 1,	
-	Value = 30,
+	Value = 25,
 	Format = function(v)
 	PosY = v
 		print(v)
@@ -6172,7 +6172,7 @@ Page2.CreateToggle({
     while wait(.1) do
         if _G.FastAttack4 then
             pcall(function()
-                repeat task.wait(0.5)
+                repeat task.wait(00.10)
                     AttackNoCD()
                 until not _G.FastAttack4
             end)
@@ -6202,7 +6202,7 @@ Page2.CreateToggle({
 
     spawn(function()
         while wait(_G.FastAttackDelay) do
-            if _G.FastAttack and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
+            if _G.FastAttack4 and _G.FastAttack not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
                 pcall(function()
                     AttackNoCD()
                 end)
@@ -10180,7 +10180,7 @@ Page5.CreateToggle({
                 wait(0.1)
                 Pos = CFrame.new(-20,PosY,0)
                 wait(0.1)
-                Pos = CFrame.new(0,PosY,10)
+                Pos = CFrame.new(0,PosY,20)
                 wait(0.1)
                 Pos = CFrame.new(20,PosY,0)
             else
