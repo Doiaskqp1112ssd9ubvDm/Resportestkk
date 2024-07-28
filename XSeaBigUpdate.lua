@@ -1,5 +1,3 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Doiaskqp1112ssd9ubvDm/Resportestkk/main/nofi.lua.txt"))()
-
 local UserInputService = game:GetService("UserInputService")
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local TweenService = game:GetService("TweenService")
@@ -4366,13 +4364,13 @@ end
     spawn(function()
         while wait() do
             if _G.SpinPos then
-                Pos = CFrame.new(0,PosY,-20)
+                Pos = CFrame.new(0,PosY,-10)
                 wait(0.1)
-                Pos = CFrame.new(-20,PosY,0)
+                Pos = CFrame.new(-10,PosY,0)
                 wait(0.1)
-                Pos = CFrame.new(0,PosY,20)
+                Pos = CFrame.new(0,PosY,10)
                 wait(0.1)
-                Pos = CFrame.new(20,PosY,0)
+                Pos = CFrame.new(15,PosY,0)
             else
                 Pos = CFrame.new(0,PosY,0)
             end
@@ -6136,7 +6134,49 @@ Page2.CreateToggle({
 	_G.FastAttack = x
 		print(v)
 	end,
+})Page2.CreateToggle({
+	Name = "Fast Attack two",
+	Dis = "Fast Attack two",
+	Value = true,
+	Callback = function(x)
+	_G.FastAttack2 = x
+		print(v)
+	end,
 })
+
+    spawn(function()
+    while wait(.1) do
+        if _G.FastAttack2 then
+            pcall(function()
+                repeat task.wait(_G.FastAttackDelay)
+                    AttackNoCD()
+                until not _G.FastAttack2
+            end)
+        end
+    end
+end)
+
+Page2.CreateToggle({
+	Name = "Fast Attack 4",
+	Dis = "Fast Attack 4",
+	Value = true,
+	Callback = function(x)
+	_G.FastAttack4 = x
+		print(v)
+	end,
+})
+
+    spawn(function()
+    while wait(.1) do
+        if _G.FastAttack4 then
+            pcall(function()
+                repeat task.wait(0.05)
+                    AttackNoCD()
+                until not _G.FastAttack4
+            end)
+        end
+    end
+end)
 
 Page2.CreateToggle({
 	Name = "Spin Position When Farm",
@@ -6250,14 +6290,14 @@ end
 
 Page2.CreateDropdown({
 	Name = "Fast Attack Delay",
-	Value = "0.200",
+	Value = "0.110",
 	List = {0, 0.110, 0.150, 0.165, 0.175, 0.200, 0.250},
 	Callback = function(v)
 	_G.FastAttackDelay = v
 		print(v)
 	end,
 })
-_G.FastAttackDelay = "0.200"
+_G.FastAttackDelay = "0.110"
 
 
 Page2.CreateToggle({
