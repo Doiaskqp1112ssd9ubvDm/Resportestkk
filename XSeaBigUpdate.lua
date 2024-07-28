@@ -6081,7 +6081,7 @@ Page2.CreateSlider({
 	Name = "Distance",
 	Max = 50,
 	Min = 1,	
-	Value = 25,
+	Value = 30,
 	Format = function(v)
 	PosY = v
 		print(v)
@@ -6172,7 +6172,7 @@ Page2.CreateToggle({
     while wait(.1) do
         if _G.FastAttack4 then
             pcall(function()
-                repeat task.wait(0.1)
+                repeat task.wait(00.6)
                     AttackNoCD()
                 until not _G.FastAttack4
             end)
@@ -6202,7 +6202,7 @@ Page2.CreateToggle({
 
     spawn(function()
         while wait(_G.FastAttackDelay) do
-            if _G.FastAttack4 and _G.FastAttack not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
+            if _G.FastAttack and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
                 pcall(function()
                     AttackNoCD()
                 end)
@@ -6292,14 +6292,14 @@ end
 
 Page2.CreateDropdown({
 	Name = "Fast Attack Delay",
-	Value = "0.110",
+	Value = "0.200",
 	List = {0, 0.110, 0.150, 0.165, 0.175, 0.200, 0.250},
 	Callback = function(v)
 	_G.FastAttackDelay = v
 		print(v)
 	end,
 })
-_G.FastAttackDelay = "0.110"
+_G.FastAttackDelay = "0.200"
 
 
 Page2.CreateToggle({
@@ -10022,7 +10022,7 @@ Page5.CreateToggle({
 Page5.CreateToggle({
 	Name = "Auto Farm Shark",
 	Dis = "Kill Shark",
-	Value = true,
+	Value = false,
 	Callback = function(v)
 	_G.AutoKillShark = v
 	StopTween(_G.AutoKillShark)
@@ -10033,7 +10033,7 @@ Page5.CreateToggle({
 Page5.CreateToggle({
 	Name = "Auto Farm Piranha",
 	Dis =  "Kill piranha",
-	Value = true,
+	Value = false,
 	Callback = function(v)
 	_G.AutoKillPiranha = v
 	StopTween(_G.AutoKillPiranha)
@@ -10253,7 +10253,7 @@ Page5.CreateToggle({
 Page5.CreateToggle({
 	Name = "Auto Terrorshark",
 	Dis = "Kill Terrorshark",
-	Value = true,
+	Value = false,
 	Callback = function(v)
 	_G.AutoTerrorshark = v
 	StopTween(_G.AutoTerrorshark)
