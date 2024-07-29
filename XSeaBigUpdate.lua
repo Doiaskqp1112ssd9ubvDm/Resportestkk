@@ -6138,20 +6138,19 @@ Page2.CreateToggle({
 Page2.CreateToggle({
 	Name = "Fast Attack two",
 	Dis = "Fast Attack two",
-	Value = true,
+	Value = false,
 	Callback = function(x)
-	_G.FastAttack = x
+	_G.FastAttack4 = x
 		print(v)
 	end,
 })
-
     spawn(function()
     while wait(.1) do
-        if _G.FastAttack then
+        if _G.FastAttack4 then
             pcall(function()
                 repeat task.wait(_G.FastAttackDelay)
-                    AttackNoCD()
-                until not _G.FastAttack
+                    GetBladeHit()
+                until not _G.FastAttack4
             end)
         end
     end
@@ -6171,7 +6170,7 @@ Page2.CreateToggle({
 Page2.CreateToggle({
 	Name = "Attack Aura",
 	Dis = "Attack Near | Auto Click",
-	Value = true,
+	Value = false,
 	Callback = function(x)
 	_G.AttackMob = x
 		print(v)
@@ -6180,7 +6179,7 @@ Page2.CreateToggle({
 
     spawn(function()
         while wait(_G.FastAttackDelay) do
-            if _G.AttackMob and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
+            if _G.FastAttack and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
                 pcall(function()
                     AttackNoCD()
                 end)
@@ -6268,16 +6267,60 @@ function AttackNoCD()
     end
 end
 
+function GetBladeHit()
+    local CombatFrameworkLib = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))
+    local CmrFwLib = CombatFrameworkLib[2]
+    local p13 = CmrFwLib.activeController
+    local weapon = p13.blades[1]
+    if not weapon then 
+        return weapon
+    end
+    while weapon.Parent ~= game.Players.LocalPlayer.Character do
+        weapon = weapon.Parent 
+    end
+    return weapon
+end
+function AttackHit()
+    local CombatFrameworkLib = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))
+    local CmrFwLib = CombatFrameworkLib[2]
+    local plr = game.Players.LocalPlayer
+    for i = 1, 1 do
+        local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(plr.Character,{plr.Character.HumanoidRootPart},60)
+        local cac = {}
+        local hash = {}
+        for k, v in pairs(bladehit) do
+            if v.Parent:FindFirstChild("HumanoidRootPart") and not hash[v.Parent] then
+                table.insert(cac, v.Parent.HumanoidRootPart)
+                hash[v.Parent] = true
+            end
+        end
+        bladehit = cac
+        if #bladehit > 0 then
+            pcall(function()
+                CmrFwLib.activeController.timeToNextAttack = 1
+                CmrFwLib.activeController.attacking = false
+                CmrFwLib.activeController.blocking = false
+                CmrFwLib.activeController.timeToNextBlock = 0
+                CmrFwLib.activeController.increment = 3
+                CmrFwLib.activeController.hitboxMagnitude = 120
+                CmrFwLib.activeController.focusStart = 0
+                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetBladeHit()))
+                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, i, "")
+            end)
+        end
+    end
+end
+
 Page2.CreateDropdown({
 	Name = "Fast Attack Delay",
-	Value = "0.110",
+	Value = "0.175",
 	List = {0, 0.110, 0.150, 0.165, 0.175, 0.200, 0.250},
 	Callback = function(v)
 	_G.FastAttackDelay = v
 		print(v)
 	end,
 })
-_G.FastAttackDelay = "0.110"
+_G.FastAttackDelay = "0.175"
 
 
 Page2.CreateToggle({
