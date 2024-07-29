@@ -2167,7 +2167,7 @@ local Windown = library.Create({
 	},UIColor = {
 		['Shadown'] = Color3.fromRGB(0, 0, 0),
 		['MainBackground'] = Color3.fromRGB(0, 0, 0),
-		['Background2'] = Color3.fromRGB(0, 0, 255),
+		['Background2'] = Color3.fromRGB(255, 255, 255),
 		['ToggleO'] = Color3.fromRGB(36, 90, 91),
 		['TapButtonColor'] = Color3.fromRGB(63, 136, 134),
 		['DropDownSelect'] = Color3.fromRGB(38, 90, 88),
@@ -6115,7 +6115,7 @@ Page2.CreateSlider({
 	Name = "Distance",
 	Max = 50,
 	Min = 1,	
-	Value = 32,
+	Value = 25,
 	Format = function(v)
 	PosY = v
 		print(v)
@@ -6172,7 +6172,7 @@ Page2.CreateToggle({
 Page2.CreateToggle({
 	Name = "Fast Attack two",
 	Dis = "Fast Attack two",
-	Value = false,
+	Value = true,
 	Callback = function(x)
 	_G.FastAttack4 = x
 		print(v)
@@ -6182,7 +6182,7 @@ Page2.CreateToggle({
     while wait(.1) do
         if _G.FastAttack4 then
             pcall(function()
-                repeat task.wait(_G.FastAttackDelay)
+                repeat task.wait(0.05)
                     GetBladeHit()
                 until not _G.FastAttack4
             end)
@@ -6194,7 +6194,7 @@ end)
 Page2.CreateToggle({
 	Name = "Spin Position When Farm",
 	Dis = "",
-	Value = false,
+	Value = true,
 	Callback = function(v)
 	    _G.SpinPos = v
 		print(v)
