@@ -6081,7 +6081,7 @@ Page2.CreateSlider({
 	Name = "Distance",
 	Max = 50,
 	Min = 1,	
-	Value = 30,
+	Value = 32,
 	Format = function(v)
 	PosY = v
 		print(v)
@@ -6134,49 +6134,29 @@ Page2.CreateToggle({
 	_G.FastAttack = x
 		print(v)
 	end,
-})Page2.CreateToggle({
+})
+Page2.CreateToggle({
 	Name = "Fast Attack two",
 	Dis = "Fast Attack two",
 	Value = true,
 	Callback = function(x)
-	_G.FastAttack2 = x
+	_G.FastAttack = x
 		print(v)
 	end,
 })
 
     spawn(function()
     while wait(.1) do
-        if _G.FastAttack2 then
+        if _G.FastAttack then
             pcall(function()
                 repeat task.wait(_G.FastAttackDelay)
                     AttackNoCD()
-                until not _G.FastAttack2
+                until not _G.FastAttack
             end)
         end
     end
 end)
 
-Page2.CreateToggle({
-	Name = "Fast Attack 4",
-	Dis = "Fast Attack 4",
-	Value = true,
-	Callback = function(x)
-	_G.FastAttack4 = x
-		print(v)
-	end,
-})
-
-    spawn(function()
-    while wait(.1) do
-        if _G.FastAttack4 then
-            pcall(function()
-                repeat task.wait(0.05)
-                    AttackNoCD()
-                until not _G.FastAttack4
-            end)
-        end
-    end
-end)
 
 Page2.CreateToggle({
 	Name = "Spin Position When Farm",
@@ -6191,7 +6171,7 @@ Page2.CreateToggle({
 Page2.CreateToggle({
 	Name = "Attack Aura",
 	Dis = "Attack Near | Auto Click",
-	Value = false,
+	Value = true,
 	Callback = function(x)
 	_G.AttackMob = x
 		print(v)
@@ -6200,7 +6180,7 @@ Page2.CreateToggle({
 
     spawn(function()
         while wait(_G.FastAttackDelay) do
-            if _G.FastAttack and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
+            if _G.AttackMob and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
                 pcall(function()
                     AttackNoCD()
                 end)
