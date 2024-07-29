@@ -2160,14 +2160,14 @@ end
 
 -- Dark Blue Theme
 local Windown = library.Create({
-	Title = "X-Seaa Discord.gg/xaZ9CZtJ", Logo = 17851124858,
+	Title = "X-Sea Discord.gg/y6G6SDEJvF", Logo = 17851124858,
 	CornerRadius = 2, UISize = {
 		X = 600,
 		Y = 400
 	},UIColor = {
 		['Shadown'] = Color3.fromRGB(0, 0, 0),
 		['MainBackground'] = Color3.fromRGB(0, 0, 0),
-		['Background2'] = Color3.fromRGB(255, 255, 255),
+		['Background2'] = Color3.fromRGB(0, 0, 255),
 		['ToggleO'] = Color3.fromRGB(36, 90, 91),
 		['TapButtonColor'] = Color3.fromRGB(63, 136, 134),
 		['DropDownSelect'] = Color3.fromRGB(38, 90, 88),
@@ -4364,13 +4364,13 @@ end
     spawn(function()
         while wait() do
             if _G.SpinPos then
-                Pos = CFrame.new(0,PosY,-20)
+                Pos = CFrame.new(0,PosY,-10)
                 wait(0.1)
-                Pos = CFrame.new(-20,PosY,0)
+                Pos = CFrame.new(-10,PosY,0)
                 wait(0.1)
                 Pos = CFrame.new(0,PosY,10)
                 wait(0.1)
-                Pos = CFrame.new(20,PosY,0)
+                Pos = CFrame.new(15,PosY,0)
             else
                 Pos = CFrame.new(0,PosY,0)
             end
@@ -6134,9 +6134,7 @@ Page2.CreateToggle({
 	_G.FastAttack = x
 		print(v)
 	end,
-})
-
-Page2.CreateToggle({
+})Page2.CreateToggle({
 	Name = "Fast Attack two",
 	Dis = "Fast Attack two",
 	Value = true,
@@ -6172,7 +6170,7 @@ Page2.CreateToggle({
     while wait(.1) do
         if _G.FastAttack4 then
             pcall(function()
-                repeat task.wait(00.6)
+                repeat task.wait(0.05)
                     AttackNoCD()
                 until not _G.FastAttack4
             end)
@@ -6292,14 +6290,14 @@ end
 
 Page2.CreateDropdown({
 	Name = "Fast Attack Delay",
-	Value = "0.200",
+	Value = "0.110",
 	List = {0, 0.110, 0.150, 0.165, 0.175, 0.200, 0.250},
 	Callback = function(v)
 	_G.FastAttackDelay = v
 		print(v)
 	end,
 })
-_G.FastAttackDelay = "0.200"
+_G.FastAttackDelay = "0.110"
 
 
 Page2.CreateToggle({
@@ -10173,22 +10171,6 @@ Page5.CreateToggle({
     --     end
     -- end)
 
-    spawn(function()
-        while wait() do
-            if _G.AutoTerrorshark then
-                Pos = CFrame.new(0,PosY,-20)
-                wait(0.1)
-                Pos = CFrame.new(-20,PosY,0)
-                wait(0.1)
-                Pos = CFrame.new(0,PosY,10)
-                wait(0.1)
-                Pos = CFrame.new(20,PosY,0)
-            else
-                Pos = CFrame.new(0,PosY,0)
-            end
-        end
-    end)
-    
     function UpDownPos(pos)
         fastpos(pos * CFrame.new(0, 40, 0))
         wait(2)
