@@ -4360,6 +4360,40 @@ end
 --     end)
 --     end
     
+
+Type = 1
+spawn(function()
+while wait(.1) do
+    if Type == 1 then
+        Pos = CFrame.new(0,PosY,0)
+    elseif Type == 2 then
+        Pos = CFrame.new(0,PosY,-0)
+    elseif Type == 3 then
+        Pos = CFrame.new(0,PosY,0)
+    elseif Type == 4 then
+        Pos = CFrame.new(0,PosY,0)	
+    elseif Type == 5 then
+        Pos = CFrame.new(-0,PosY,0)
+    elseif Type == 6 then
+        Pos = CFrame.new(0,0,0)
+    end
+    end
+end)
+
+spawn(function()
+while wait(.1) do
+    Type = 1
+    wait(0.5)
+    Type = 2
+    wait(0.5)
+    Type = 3
+    wait(0.5)
+    Type = 4
+    wait(0.5)
+    Type = 5
+    wait(0.5)
+end
+end)
     
     spawn(function()
         while wait() do
@@ -6160,7 +6194,7 @@ end)
 Page2.CreateToggle({
 	Name = "Spin Position When Farm",
 	Dis = "",
-	Value = true,
+	Value = false,
 	Callback = function(v)
 	    _G.SpinPos = v
 		print(v)
@@ -6280,6 +6314,21 @@ function GetBladeHit()
     end
     return weapon
 end
+
+function GetBladeHit()
+    local CombatFrameworkLib = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))
+    local CmrFwLib = CombatFrameworkLib[2]
+    local p13 = CmrFwLib.activeController
+    local weapon = p13.blades[1]
+    if not weapon then 
+        return weapon
+    end
+    while weapon.Parent ~= game.Players.LocalPlayer.Character do
+        weapon = weapon.Parent 
+    end
+    return weapon
+end
+
 function AttackHit()
     local CombatFrameworkLib = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))
     local CmrFwLib = CombatFrameworkLib[2]
