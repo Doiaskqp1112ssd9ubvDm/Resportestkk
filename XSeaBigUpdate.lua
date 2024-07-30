@@ -4361,39 +4361,7 @@ end
 --     end
     
 
-Type = 1
-spawn(function()
-while wait(.1) do
-    if Type == 1 then
-        Pos = CFrame.new(0,PosY,0)
-    elseif Type == 2 then
-        Pos = CFrame.new(0,PosY,-0)
-    elseif Type == 3 then
-        Pos = CFrame.new(0,PosY,0)
-    elseif Type == 4 then
-        Pos = CFrame.new(0,PosY,0)	
-    elseif Type == 5 then
-        Pos = CFrame.new(-0,PosY,0)
-    elseif Type == 6 then
-        Pos = CFrame.new(0,0,0)
-    end
-    end
-end)
 
-spawn(function()
-while wait(.1) do
-    Type = 1
-    wait(0.5)
-    Type = 2
-    wait(0.5)
-    Type = 3
-    wait(0.5)
-    Type = 4
-    wait(0.5)
-    Type = 5
-    wait(0.5)
-end
-end)
     
     spawn(function()
         while wait() do
@@ -6222,7 +6190,7 @@ Page2.CreateToggle({
 
     spawn(function()
         while wait(_G.FastAttackDelay) do
-            if _G.FastAttack and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
+            if _G.FastAttack and _G.FastAttackCambodiakak and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
                 pcall(function()
                     AttackNoCD()
                 end)
