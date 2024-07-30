@@ -6183,7 +6183,7 @@ Page2.CreateToggle({
         if _G.FastAttack4 then
             pcall(function()
                 repeat task.wait(0.05)
-                    GetBladeHit()
+                    AttackNoCD()
                 until not _G.FastAttack4
             end)
         end
@@ -6204,7 +6204,7 @@ Page2.CreateToggle({
 Page2.CreateToggle({
 	Name = "Attack Aura",
 	Dis = "Attack Near | Auto Click",
-	Value = false,
+	Value = true,
 	Callback = function(x)
 	_G.AttackMob = x
 		print(v)
@@ -6375,8 +6375,8 @@ Page2.CreateDropdown({
 	Name = "Fast Attack Delay",
 	Value = "0.150",
 	List = {0, 0.110, 0.150, 0.165, 0.175, 0.200, 0.250},
-	Callback = function(v)
-	_G.FastAttackDelay = v
+	Callback = function(value)
+	_G.FastAttackDelay = value
 		print(v)
 	end,
 })
