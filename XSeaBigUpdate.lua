@@ -6174,17 +6174,17 @@ Page2.CreateToggle({
 	Dis = "Fast Attack two",
 	Value = true,
 	Callback = function(value)
-	_G.FastAttack4 = value
+	_G.FastAttack = value
 		print(v)
 	end,
 })
     spawn(function()
     while wait(.1) do
-        if _G.FastAttack4 then
+        if _G.FastAttack then
             pcall(function()
                 repeat task.wait(0.05)
                     AttackNoCD()
-                until not _G.FastAttack4
+                until not _G.FastAttack
             end)
         end
     end
@@ -6204,7 +6204,7 @@ Page2.CreateToggle({
 Page2.CreateToggle({
 	Name = "Attack Aura",
 	Dis = "Attack Near | Auto Click",
-	Value = true,
+	Value = false,
 	Callback = function(x)
 	_G.AttackMob = x
 		print(v)
@@ -6213,7 +6213,7 @@ Page2.CreateToggle({
 
     spawn(function()
         while wait(_G.FastAttackDelay) do
-            if _G.AttackMob and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
+            if _G.FastAttack and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
                 pcall(function()
                     AttackNoCD()
                 end)
@@ -6364,7 +6364,7 @@ spawn(function()
         if _G.FastAttack then
             pcall(function()
                 repeat task.wait(_G.FastAttackDelay)
-                    GetBladeHit()
+                    AttackNoCD()
                 until not _G.FastAttack
             end)
         end
