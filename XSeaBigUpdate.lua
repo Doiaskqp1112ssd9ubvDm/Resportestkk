@@ -6213,7 +6213,7 @@ Page2.CreateToggle({
 
     spawn(function()
         while wait(_G.FastAttackDelay) do
-            if _G.FastAttack and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
+            if _G.AttackMob and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
                 pcall(function()
                     AttackNoCD()
                 end)
@@ -6351,7 +6351,7 @@ function AttackHit()
                 CmrFwLib.activeController.blocking = false
                 CmrFwLib.activeController.timeToNextBlock = 0
                 CmrFwLib.activeController.increment = 3
-                CmrFwLib.activeController.hitboxMagnitude = 120
+                CmrFwLib.activeController.hitboxMagnitude = 60
                 CmrFwLib.activeController.focusStart = 0
                 game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetBladeHit()))
                 game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, i, "")
