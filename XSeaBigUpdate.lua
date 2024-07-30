@@ -6142,17 +6142,17 @@ Page2.CreateToggle({
 	Dis = "Fast Attack two",
 	Value = true,
 	Callback = function(value)
-	_G.FastAttack = value
+	_G.FastAttack2 = value
 		print(v)
 	end,
 })
     spawn(function()
     while wait(.1) do
-        if _G.FastAttack then
+        if _G.FastAttack2 then
             pcall(function()
                 repeat task.wait(0.05)
                     AttackNoCD()
-                until not _G.FastAttack
+                until not _G.FastAttack2
             end)
         end
     end
@@ -6190,7 +6190,7 @@ Page2.CreateToggle({
 
     spawn(function()
         while wait(_G.FastAttackDelay) do
-            if _G.FastAttack and _G.FastAttackCambodiakak and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
+            if _G.FastAttack and _G.FastAttack2 and _G.FastAttackCambodiakak and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
                 pcall(function()
                     AttackNoCD()
                 end)
