@@ -6373,14 +6373,14 @@ end)
 
 Page2.CreateDropdown({
 	Name = "Fast Attack Delay",
-	Value = "0.110",
+	Value = "0.150",
 	List = {0, 0.110, 0.150, 0.165, 0.175, 0.200, 0.250},
 	Callback = function(v)
 	_G.FastAttackDelay = v
 		print(v)
 	end,
 })
-_G.FastAttackDelay = "0.110"
+_G.FastAttackDelay = "0.150"
 
 
 Page2.CreateToggle({
