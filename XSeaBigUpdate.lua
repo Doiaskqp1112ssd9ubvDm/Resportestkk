@@ -6130,7 +6130,7 @@ end)
     
 Page2.CreateToggle({
 	Name = "Fast Attack 1",
-	Dis = "Farm Mastery Not On Fast attack 1",
+	Dis = "",
 	Value = true,
 	Callback = function(value)
 	_G.FastAttack = value
@@ -6140,7 +6140,7 @@ Page2.CreateToggle({
 Page2.CreateToggle({
 	Name = "Fast Attack two",
 	Dis = "Fast Attack two",
-	Value = true,
+	Value = false,
 	Callback = function(value)
 	_G.FastAttack2 = value
 		print(v)
@@ -6161,7 +6161,7 @@ end)
 Page2.CreateToggle({
 	Name = "Fast Attack true3",
 	Dis = "Fast Attack true3",
-	Value = true,
+	Value = false,
 	Callback = function(value)
 	_G.FastAttackCambodiakak = value
 		print(v)
