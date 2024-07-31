@@ -4367,11 +4367,11 @@ end
         while wait() do
             if _G.SpinPos then
                 Pos = CFrame.new(0,PosY,-0)
-                wait(0.2)
+                wait(0.1)
                 Pos = CFrame.new(-0,PosY,0)
-                wait(0.2)
+                wait(0.1)
                 Pos = CFrame.new(0,PosY,0)
-                wait(0.2)
+                wait(0.1)
                 Pos = CFrame.new(0,PosY,0)
             else
                 Pos = CFrame.new(0,PosY,0)
@@ -6133,7 +6133,7 @@ Page2.CreateToggle({
 	Dis = "Farm Mastery Not On Fast attack 1",
 	Value = true,
 	Callback = function(value)
-	_G.FastAttack1 = value
+	_G.FastAttack = value
 		print(v)
 	end,
 })
@@ -6190,7 +6190,7 @@ Page2.CreateToggle({
 
     spawn(function()
         while wait(_G.FastAttackDelay) do
-            if _G.FastAttack1 and _G.FastAttack2 and _G.FastAttackCambodiakak and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
+            if _G.FastAttack and _G.FastAttack2 and _G.FastAttackCambodiakak and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
                 pcall(function()
                     AttackNoCD()
                 end)
@@ -6338,11 +6338,11 @@ function AttackHit()
 end
 spawn(function()
     while wait(.1) do
-        if _G.FastAttack1 then
+        if _G.FastAttack then
             pcall(function()
                 repeat task.wait(_G.FastAttackDelay)
                     AttackNoCD()
-                until not _G.FastAttack1
+                until not _G.FastAttack
             end)
         end
     end
@@ -6374,7 +6374,7 @@ spawn(function()
 end)
 spawn(function()
     game:GetService("RunService").RenderStepped:Connect(function()
-        if _G.FastAttack1 or _G.FastAttackCambodiakak == true then
+        if _G.FastAttack or _G.FastAttackCambodiakak == true then
             game.Players.LocalPlayer.Character.Stun.Value = 0
             game.Players.LocalPlayer.Character.Busy.Value = false        
         end
