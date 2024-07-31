@@ -4274,7 +4274,7 @@ end
         ):Play()
     end
 
-     or (game:GetService("Workspace").Enemies:FindFirstChild("Shark") and _G.AutoKillShark) or (game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") and _G.AutoTerrorshark) or (game:GetService("Workspace").Enemies:FindFirstChild("Piranha") and _G.AutoKillPiranha) or (game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") and _G.AutoKillFishCrew)
+    -- or (game:GetService("Workspace").Enemies:FindFirstChild("Shark") and _G.AutoKillShark) or (game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") and _G.AutoTerrorshark) or (game:GetService("Workspace").Enemies:FindFirstChild("Piranha") and _G.AutoKillPiranha) or (game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") and _G.AutoKillFishCrew)
     
     local stopboat = {}
 function TPB(pos, boat)
@@ -4367,11 +4367,11 @@ end
         while wait() do
             if _G.SpinPos then
                 Pos = CFrame.new(0,PosY,-0)
-                wait(0.1)
+                wait(0.2)
                 Pos = CFrame.new(-0,PosY,0)
-                wait(0.1)
+                wait(0.2)
                 Pos = CFrame.new(0,PosY,0)
-                wait(0.1)
+                wait(0.2)
                 Pos = CFrame.new(0,PosY,0)
             else
                 Pos = CFrame.new(0,PosY,0)
