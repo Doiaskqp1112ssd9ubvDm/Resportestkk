@@ -4366,13 +4366,13 @@ end
     spawn(function()
         while wait() do
             if _G.SpinPos then
-                Pos = CFrame.new(0,PosY,-10)
+                Pos = CFrame.new(0,PosY,-0)
                 wait(0.1)
-                Pos = CFrame.new(-10,PosY,0)
+                Pos = CFrame.new(-0,PosY,0)
                 wait(0.1)
-                Pos = CFrame.new(0,PosY,10)
+                Pos = CFrame.new(0,PosY,0)
                 wait(0.1)
-                Pos = CFrame.new(15,PosY,0)
+                Pos = CFrame.new(0,PosY,0)
             else
                 Pos = CFrame.new(0,PosY,0)
             end
@@ -6129,8 +6129,8 @@ spawn(function()
 end)
     
 Page2.CreateToggle({
-	Name = "Fast Attack",
-	Dis = "Fast Attack",
+	Name = "Fast Attack 1",
+	Dis = "Farm Mastery Not On Fast attack 1",
 	Value = true,
 	Callback = function(value)
 	_G.FastAttack = value
@@ -6484,7 +6484,7 @@ Page2.CreateSlider({
 	Name = "Tween Speed",
 	Max = 350,
 	Min = 1,	
-	Value = 280,
+	Value = 300,
 	Format = function(v)
 	    TweenSpeed = v
 		print(v)
