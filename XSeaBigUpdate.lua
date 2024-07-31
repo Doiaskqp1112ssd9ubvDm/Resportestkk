@@ -4274,7 +4274,7 @@ end
         ):Play()
     end
 
-    -- or (game:GetService("Workspace").Enemies:FindFirstChild("Shark") and _G.AutoKillShark) or (game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") and _G.AutoTerrorshark) or (game:GetService("Workspace").Enemies:FindFirstChild("Piranha") and _G.AutoKillPiranha) or (game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") and _G.AutoKillFishCrew)
+     or (game:GetService("Workspace").Enemies:FindFirstChild("Shark") and _G.AutoKillShark) or (game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") and _G.AutoTerrorshark) or (game:GetService("Workspace").Enemies:FindFirstChild("Piranha") and _G.AutoKillPiranha) or (game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") and _G.AutoKillFishCrew)
     
     local stopboat = {}
 function TPB(pos, boat)
@@ -6133,7 +6133,7 @@ Page2.CreateToggle({
 	Dis = "Farm Mastery Not On Fast attack 1",
 	Value = true,
 	Callback = function(value)
-	_G.FastAttack = value
+	_G.FastAttack1 = value
 		print(v)
 	end,
 })
@@ -6190,7 +6190,7 @@ Page2.CreateToggle({
 
     spawn(function()
         while wait(_G.FastAttackDelay) do
-            if _G.FastAttack and _G.FastAttack2 and _G.FastAttackCambodiakak and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
+            if _G.FastAttack1 and _G.FastAttack2 and _G.FastAttackCambodiakak and not _G.AutoFarmFruitMastery and not _G.AutoFarmGunMastery then
                 pcall(function()
                     AttackNoCD()
                 end)
@@ -6338,11 +6338,11 @@ function AttackHit()
 end
 spawn(function()
     while wait(.1) do
-        if _G.FastAttack then
+        if _G.FastAttack1 then
             pcall(function()
                 repeat task.wait(_G.FastAttackDelay)
                     AttackNoCD()
-                until not _G.FastAttack
+                until not _G.FastAttack1
             end)
         end
     end
@@ -6374,7 +6374,7 @@ spawn(function()
 end)
 spawn(function()
     game:GetService("RunService").RenderStepped:Connect(function()
-        if _G.FastAttack or _G.FastAttackCambodiakak == true then
+        if _G.FastAttack1 or _G.FastAttackCambodiakak == true then
             game.Players.LocalPlayer.Character.Stun.Value = 0
             game.Players.LocalPlayer.Character.Busy.Value = false        
         end
